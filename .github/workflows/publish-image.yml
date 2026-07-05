@@ -1,6 +1,9 @@
 name: Build & Publish Tiny Fetcher
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
