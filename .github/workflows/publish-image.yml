@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 #v6
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}-tiny-fetcher
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
             type=sha,format=long
             type=raw,value=latest,enable={{is_default_branch}}
@@ -42,7 +42,6 @@ jobs:
       - name: Build and Push Downloader Docker Image
         uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf #v7.2.0
         with:
-          context: ./.tiny-fetcher
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
