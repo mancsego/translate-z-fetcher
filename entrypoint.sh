@@ -2,6 +2,8 @@
 set -e
 
 API="https://translate-z.paca74.ddns.net/"
+X_API_KEY="iBU?qX~p9fEzTUneWg58*SO5?ftws5Yr3rguCEcS4IBrYPfhfgHhBKJvprNreO"
+
 
 validate() {
     if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
@@ -16,6 +18,7 @@ make_request() {
     
     curl -s -X GET "${API}api/get-translations/${PROJECT_ID}/${LANGUAGE_ID}?format=${FORMAT}" \
          -H "Authorization: Bearer ${API_KEY}" \
+         -H "X-API-Key: ${X_API_KEY}" \
          -o "${OUTPUT_FILE}"
 }
 
